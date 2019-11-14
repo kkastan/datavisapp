@@ -15,6 +15,10 @@ class BarChart extends React.Component {
 
   drawChart() {
     const data = this.props.gaussian;
+    var width = this.props.width,   // width of svg
+      height = this.props.height,  // height of svg
+      padding = 100; // space around the chart, not including labels
+      padding = 100; // space around the chart, not including labels
 
     const svg = d3.select("body")
       .append("svg")
@@ -31,6 +35,17 @@ class BarChart extends React.Component {
       .attr("width", 1)
       .attr("height", (d, i) => 500 - (5000 * d))
       .attr("fill", "green")
+
+    // now add titles to the axes
+    svg.append("text")
+      .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+      .attr("transform", "translate("+ (padding/2) +","+(height/2)+")rotate(-90)")  // text is drawn off the screen top left, move down and out and rotate
+      .text("Average MPG");
+
+    svg.append("text")
+      .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+      .attr("transform", "translate("+ (width/2) +","+(height-(padding/3))+")")  // centre below axis
+      .text("Average Mean of Vehicles");
   }
 
   render(){
