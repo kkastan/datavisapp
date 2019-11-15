@@ -15,7 +15,7 @@ class BarChart extends React.Component {
 
   drawChart() {
     const data = this.props.gaussian;
-    var width = this.props.width,   // width of svg
+    const width = this.props.width,   // width of svg
       height = this.props.height,  // height of svg
       padding = 100; // space around the chart, not including labels
       padding = 100; // space around the chart, not including labels
